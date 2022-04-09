@@ -1,0 +1,25 @@
+{
+    "workbench.colorCustomizations": {
+        "activityBar.activeBackground": "#5564db",
+        "activityBar.activeBorder": "#e9969f",
+        "activityBar.background": "#5564db",
+        "activityBar.foreground": "#e7e7e7",
+        "activityBar.inactiveForeground": "#e7e7e799",
+        "activityBarBadge.background": "#e9969f",
+        "activityBarBadge.foreground": "#15202b",
+        "sash.hoverBorder": "#5564db",
+        "statusBar.background": "#2c3fd1",
+        "statusBar.foreground": "#e7e7e7",
+        "statusBarItem.hoverBackground": "#5564db",
+        "statusBarItem.remoteBackground": "#2c3fd1",
+        "statusBarItem.remoteForeground": "#e7e7e7",
+        "titleBar.activeBackground": "#2c3fd1",
+        "titleBar.activeForeground": "#e7e7e7",
+        "titleBar.inactiveBackground": "#2c3fd199",
+        "titleBar.inactiveForeground": "#e7e7e799"
+    },
+    "peacock.color": "#2c3fd1",
+    "cSpell.words": [
+        "Wazo"
+    ]
+}

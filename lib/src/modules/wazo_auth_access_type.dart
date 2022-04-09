@@ -1,0 +1,4 @@
+enum WazoAuthAccessType {
+  online,
+  offline,
+}
