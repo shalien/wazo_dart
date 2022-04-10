@@ -1,6 +1,7 @@
 import '../../wazo_exception.dart';
 import '../wazo_module.dart';
 
+/// Represents the `status` endpoint of the `auth` module.
 class WazoAuthStatus extends WazoModule {
   WazoAuthStatus(WazoModule parent) : super.fromParent(parent);
 

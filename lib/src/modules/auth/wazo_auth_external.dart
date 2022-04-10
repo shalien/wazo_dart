@@ -4,6 +4,7 @@ import '../../wazo_direction.dart';
 import '../../wazo_exception.dart';
 import '../wazo_module.dart';
 
+/// Represents the `external` endpoint of the `auth` module.
 class WazoAuthExternal extends WazoModule {
   WazoAuthExternal(WazoModule parent) : super.fromParent(parent);
 

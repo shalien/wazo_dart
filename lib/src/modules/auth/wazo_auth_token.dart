@@ -7,6 +7,7 @@ import 'token/wazo_token_access_type.dart';
 import 'token/wazo_token_session_type.dart';
 import 'wazo_auth.dart';
 
+/// Represents the `token` endpoint of the `auth` module.
 class WazoAuthToken extends WazoModule {
   WazoAuthToken(WazoModule parent) : super.fromParent(parent);
 

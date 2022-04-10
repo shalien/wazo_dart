@@ -3,6 +3,7 @@ import 'package:wazo_dart/auth.dart';
 import '../../wazo_exception.dart';
 import '../wazo_module.dart';
 
+/// Represents the `emails` endpoint of the `auth` module.
 class WazoAuthEmails extends WazoModule {
   WazoAuthEmails(WazoModule parent) : super.fromParent(parent);
 

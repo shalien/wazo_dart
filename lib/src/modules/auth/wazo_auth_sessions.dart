@@ -4,6 +4,7 @@ import '../../wazo_exception.dart';
 import '../wazo_module.dart';
 import 'wazo_auth.dart';
 
+/// Represents the `sessions` endpoint of the `auth` module.
 class WazoAuthSessions extends WazoModule {
   WazoAuthSessions(WazoModule parent) : super.fromParent(parent);
 

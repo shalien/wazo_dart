@@ -6,6 +6,7 @@ import 'backends/wazo_backend_ldap_protocol_security.dart';
 import 'backends/wazo_backend_ldap_search_filters.dart';
 import 'backends/wazo_backend_ldap_version.dart';
 
+/// Represents the `backends` endpoint of the `auth` module.
 class WazoAuthBackends extends WazoModule {
   WazoAuthBackends(WazoModule parent) : super.fromParent(parent);
 

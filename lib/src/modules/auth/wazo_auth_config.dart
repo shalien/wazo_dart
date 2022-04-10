@@ -4,6 +4,7 @@ import '../../wazo_exception.dart';
 import '../wazo_module.dart';
 import 'config/wazo_config_patch.dart';
 
+/// Represents the `config` endpoint of the `auth` module.
 class WazoAuthConfig extends WazoModule {
   WazoAuthConfig(WazoModule parent) : super.fromParent(parent);
 

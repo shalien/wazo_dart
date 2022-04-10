@@ -5,6 +5,7 @@ import '../../wazo_exception.dart';
 import '../wazo_module.dart';
 import 'tenants/wazo_tenant_address.dart';
 
+/// Represents the `tenants` endpoint of the `auth` module.
 class WazoAuthTenants extends WazoModule {
   WazoAuthTenants(WazoModule parent) : super.fromParent(parent);
 

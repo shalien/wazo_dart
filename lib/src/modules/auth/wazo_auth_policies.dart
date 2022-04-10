@@ -5,6 +5,7 @@ import '../wazo_module.dart';
 import 'wazo_auth.dart';
 import '../../wazo_direction.dart';
 
+/// Represents the `policies` endpoint of the `auth` module.
 class WazoAuthPolicies extends WazoModule {
   WazoAuthPolicies(WazoModule parent) : super.fromParent(parent);
 

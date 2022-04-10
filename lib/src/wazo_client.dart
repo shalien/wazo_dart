@@ -9,10 +9,10 @@ import 'clients/wazo_client_none.dart'
 /// Represent a client to connect and interact with the Wazo API
 abstract class WazoClient {
   /// The [host] of the Wazo API
-  late final String host;
+  String get host;
 
   /// The internal [client] used to connect to the Wazo API
-  late final Client client;
+  Client get client;
 
   /// The [apiToken] used to authenticate to the Wazo API
   late String? apiToken;

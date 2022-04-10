@@ -5,7 +5,10 @@ import '../wazo_client.dart';
 /// Each module is then separated by endpoints
 abstract class WazoModule {
   /// The [WazoClient] used to connect to the Wazo API
-  final WazoClient wazoClient;
+  WazoClient get wazoClient => _wazoClient;
+
+  /// The [WazoClient] used to connect to the Wazo API
+  final WazoClient _wazoClient;
 
   /// The [name] of the module
   final String name;
@@ -14,10 +17,16 @@ abstract class WazoModule {
   final String version;
 
   /// Get the [Client] from the [WazoClient]
-  late Client httpClient;
+  final Client _httpClient;
+
+  /// Get the [Client] from the [WazoClient]
+  Client get httpClient => _httpClient;
 
   /// Used to create the submodules and linked them to the parent module
-  late WazoModule parent;
+  final WazoModule? _parent;
+
+  /// Used to create the submodules and linked them to the parent module
+  WazoModule? get parent => _parent;
 
   /// Shortcut to get the [apiToken] from the [WazoClient]
   String? get apiToken => wazoClient.apiToken;
@@ -29,15 +38,16 @@ abstract class WazoModule {
   /// [wazoClient] The [WazoClient] used to connect to the Wazo API
   /// [name] The [name] of the module
   /// [version] The [version] of the module
-  WazoModule(this.wazoClient, this.name, this.version) {
-    httpClient = wazoClient.client;
-  }
+  WazoModule(this._wazoClient, this.name, this.version)
+      : _httpClient = _wazoClient.client,
+        _parent = null;
 
   /// Create a submodule from a [WazoModule], representing a endpoint of the Wazo API
-  WazoModule.fromParent(this.parent)
-      : wazoClient = parent.wazoClient,
-        name = parent.name,
-        version = parent.version;
+  WazoModule.fromParent(this._parent)
+      : _wazoClient = _parent!.wazoClient,
+        name = _parent.name,
+        version = _parent.version,
+        _httpClient = _parent._httpClient;
 
   /// Format the [url] with the [name] and [version] of the module
   String formatUrl(String path) {

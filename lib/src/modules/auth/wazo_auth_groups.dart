@@ -5,6 +5,7 @@ import '../../wazo_direction.dart';
 import '../../wazo_exception.dart';
 import '../wazo_module.dart';
 
+/// Represents the `groups` endpoint of the `auth` module.
 class WazoAuthGroups extends WazoModule {
   WazoAuthGroups(WazoModule parent) : super.fromParent(parent);
 
