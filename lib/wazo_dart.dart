@@ -3,6 +3,7 @@
 /// More dartdocs go here.
 library wazo_dart;
 
-export 'src/wazo_dart_base.dart';
+export 'src/wazo_client.dart';
+export 'src/wazo_exception.dart';
 
 // TODO: Export any libraries intended for clients of this package.

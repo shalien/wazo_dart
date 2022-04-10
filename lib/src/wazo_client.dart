@@ -1,40 +1,16 @@
-import 'dart:io';
-
 import 'package:http/http.dart';
-import 'package:http/io_client.dart';
-import './modules/wazo_auth.dart';
+import 'modules/auth/wazo_auth.dart';
 
-class WazoClient {
-  final String host;
-  late final HttpClient _httpClient;
+import 'clients/wazo_client_none.dart'
+    if (dart.library.io) 'clients/wazo_client_io.dart'
+    if (dart.library.html) 'clients/wazo_client_html.dart';
 
-  late IOClient _ioClient;
-  BaseClient get client => _ioClient;
+abstract class WazoClient {
+  late final String host;
+  late final Client client;
+  late String? token;
 
-  late String token;
+  WazoAuth get auth;
 
-  WazoAuth get auth => WazoAuth(this);
-
-  WazoClient(
-    this.host,
-  ) {
-    _httpClient = HttpClient()
-      ..badCertificateCallback =
-          (X509Certificate cert, String localhost, int port) {
-        final Uri uri = Uri.parse(host);
-        return uri.host == localhost;
-      };
-
-    _ioClient = IOClient(_httpClient);
-  }
-
-  factory WazoClient.withToken(String host, String token) {
-    return _WazoClientToken(host, token);
-  }
-}
-
-class _WazoClientToken extends WazoClient {
-  _WazoClientToken(String host, String token) : super(host) {
-    this.token = token;
-  }
+  factory WazoClient(String host) => createWazoClient(host);
 }
