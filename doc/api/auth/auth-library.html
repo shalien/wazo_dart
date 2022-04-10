@@ -49,6 +49,11 @@
 </h1></div>
 
     
+<section class="desc markdown">
+  <p>This library is a wrapper around the authd API.
+It's separated in modules, each referencing a specific API Endpoint and its methods (admin, backends, groups, etc...).
+Implemented following the <a href="https://wazo-platform.org/documentation/api/authentication.html">Wazo REST API</a></p>
+</section>
 
 
     <section class="summary offset-anchor" id="classes">
@@ -60,7 +65,113 @@
 
 </dt>
 <dd>
+  Represents the auth module of the wazo platform.
+It's separated in modules, each referencing a specific API (admin, backends, groups, etc...). 
+</dd>
+
+        <dt id="WazoAuthAdmin">
+  <span class="name "><a href="../auth/WazoAuthAdmin-class.html">WazoAuthAdmin</a></span> 
+
+</dt>
+<dd>
+  Represent the <code>admin</code> endpoint of the <code>auth</code> module 
+</dd>
+
+        <dt id="WazoAuthBackends">
+  <span class="name "><a href="../auth/WazoAuthBackends-class.html">WazoAuthBackends</a></span> 
+
+</dt>
+<dd>
    
+</dd>
+
+        <dt id="WazoAuthConfig">
+  <span class="name "><a href="../auth/WazoAuthConfig-class.html">WazoAuthConfig</a></span> 
+
+</dt>
+<dd>
+   
+</dd>
+
+        <dt id="WazoAuthEmails">
+  <span class="name "><a href="../auth/WazoAuthEmails-class.html">WazoAuthEmails</a></span> 
+
+</dt>
+<dd>
+   
+</dd>
+
+        <dt id="WazoAuthExternal">
+  <span class="name "><a href="../auth/WazoAuthExternal-class.html">WazoAuthExternal</a></span> 
+
+</dt>
+<dd>
+   
+</dd>
+
+        <dt id="WazoAuthGroups">
+  <span class="name "><a href="../auth/WazoAuthGroups-class.html">WazoAuthGroups</a></span> 
+
+</dt>
+<dd>
+   
+</dd>
+
+        <dt id="WazoAuthPolicies">
+  <span class="name "><a href="../auth/WazoAuthPolicies-class.html">WazoAuthPolicies</a></span> 
+
+</dt>
+<dd>
+   
+</dd>
+
+        <dt id="WazoAuthSessions">
+  <span class="name "><a href="../auth/WazoAuthSessions-class.html">WazoAuthSessions</a></span> 
+
+</dt>
+<dd>
+   
+</dd>
+
+        <dt id="WazoAuthTenants">
+  <span class="name "><a href="../auth/WazoAuthTenants-class.html">WazoAuthTenants</a></span> 
+
+</dt>
+<dd>
+   
+</dd>
+
+        <dt id="WazoAuthToken">
+  <span class="name "><a href="../auth/WazoAuthToken-class.html">WazoAuthToken</a></span> 
+
+</dt>
+<dd>
+   
+</dd>
+
+        <dt id="WazoAuthUsers">
+  <span class="name "><a href="../auth/WazoAuthUsers-class.html">WazoAuthUsers</a></span> 
+
+</dt>
+<dd>
+  Represents the <code>users</code> endpoint of the <code>auth</code> module. 
+</dd>
+
+        <dt id="WazoConfigPatch">
+  <span class="name "><a href="../auth/WazoConfigPatch-class.html">WazoConfigPatch</a></span> 
+
+</dt>
+<dd>
+  A Json Patch operation object
+Used in <a href="../auth/WazoAuthConfig/updateConfig.html">WazoAuthConfig.updateConfig</a> 
+</dd>
+
+        <dt id="WazoTenantAddress">
+  <span class="name "><a href="../auth/WazoTenantAddress-class.html">WazoTenantAddress</a></span> 
+
+</dt>
+<dd>
+  Represent a TenantAddress 
 </dd>
 
       </dl>
@@ -75,12 +186,44 @@
       <h2>Enums</h2>
 
       <dl>
-        <dt id="WazoAuthAccessType">
-  <span class="name "><a href="../auth/WazoAuthAccessType.html">WazoAuthAccessType</a></span> 
+        <dt id="WazoBackendLdapProtocolSecurity">
+  <span class="name "><a href="../auth/WazoBackendLdapProtocolSecurity.html">WazoBackendLdapProtocolSecurity</a></span> 
 
 </dt>
 <dd>
-   
+  Represent the security protocol available for the LDAP backend 
+</dd>
+
+        <dt id="WazoBackendLdapSearchFilters">
+  <span class="name "><a href="../auth/WazoBackendLdapSearchFilters.html">WazoBackendLdapSearchFilters</a></span> 
+
+</dt>
+<dd>
+  Represent the search filters accepted by the Wazo API for the LDAP binding 
+</dd>
+
+        <dt id="WazoBackendLdapVersion">
+  <span class="name "><a href="../auth/WazoBackendLdapVersion.html">WazoBackendLdapVersion</a></span> 
+
+</dt>
+<dd>
+  Represents the version of the LDAP protocol accepted by wazo-authd. 
+</dd>
+
+        <dt id="WazoTokenAccessType">
+  <span class="name "><a href="../auth/WazoTokenAccessType.html">WazoTokenAccessType</a></span> 
+
+</dt>
+<dd>
+  Represent the type of token that can be requested to wazo-authd 
+</dd>
+
+        <dt id="WazoTokenSessionType">
+  <span class="name "><a href="../auth/WazoTokenSessionType.html">WazoTokenSessionType</a></span> 
+
+</dt>
+<dd>
+  Represent the type of session the token will be used with 
 </dd>
 
       </dl>
@@ -117,6 +260,19 @@
     <ol>
   <li class="section-title"><a href="../auth/auth-library.html#classes">Classes</a></li>
   <li><a href="../auth/WazoAuth-class.html">WazoAuth</a></li>
+  <li><a href="../auth/WazoAuthAdmin-class.html">WazoAuthAdmin</a></li>
+  <li><a href="../auth/WazoAuthBackends-class.html">WazoAuthBackends</a></li>
+  <li><a href="../auth/WazoAuthConfig-class.html">WazoAuthConfig</a></li>
+  <li><a href="../auth/WazoAuthEmails-class.html">WazoAuthEmails</a></li>
+  <li><a href="../auth/WazoAuthExternal-class.html">WazoAuthExternal</a></li>
+  <li><a href="../auth/WazoAuthGroups-class.html">WazoAuthGroups</a></li>
+  <li><a href="../auth/WazoAuthPolicies-class.html">WazoAuthPolicies</a></li>
+  <li><a href="../auth/WazoAuthSessions-class.html">WazoAuthSessions</a></li>
+  <li><a href="../auth/WazoAuthTenants-class.html">WazoAuthTenants</a></li>
+  <li><a href="../auth/WazoAuthToken-class.html">WazoAuthToken</a></li>
+  <li><a href="../auth/WazoAuthUsers-class.html">WazoAuthUsers</a></li>
+  <li><a href="../auth/WazoConfigPatch-class.html">WazoConfigPatch</a></li>
+  <li><a href="../auth/WazoTenantAddress-class.html">WazoTenantAddress</a></li>
 
 
 
@@ -124,7 +280,11 @@
 
 
   <li class="section-title"><a href="../auth/auth-library.html#enums">Enums</a></li>
-  <li><a href="../auth/WazoAuthAccessType.html">WazoAuthAccessType</a></li>
+  <li><a href="../auth/WazoBackendLdapProtocolSecurity.html">WazoBackendLdapProtocolSecurity</a></li>
+  <li><a href="../auth/WazoBackendLdapSearchFilters.html">WazoBackendLdapSearchFilters</a></li>
+  <li><a href="../auth/WazoBackendLdapVersion.html">WazoBackendLdapVersion</a></li>
+  <li><a href="../auth/WazoTokenAccessType.html">WazoTokenAccessType</a></li>
+  <li><a href="../auth/WazoTokenSessionType.html">WazoTokenSessionType</a></li>
 
 
 </ol>

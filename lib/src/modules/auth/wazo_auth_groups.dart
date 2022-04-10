@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:wazo_dart/src/modules/auth/wazo_direction.dart';
+import '../../wazo_direction.dart';
 
 import '../../wazo_exception.dart';
 import '../wazo_module.dart';
@@ -129,7 +129,7 @@ class WazoAuthGroups extends WazoModule {
 
     final response = await httpClient.get(uri, headers: {
       'Content-Type': 'application/json',
-      'X-API-Token': '$apiToken',
+      'X-Auth-Token': '$apiToken',
       ...?wazoTenant != null ? {'Wazo-Tenant': wazoTenant} : null,
     });
 
@@ -156,7 +156,7 @@ class WazoAuthGroups extends WazoModule {
     final response = await httpClient.put(uri,
         headers: {
           'Content-Type': 'application/json',
-          'X-API-Token': '$apiToken',
+          'X-Auth-Token': '$apiToken',
           ...?wazoTenant != null ? {'Wazo-Tenant': wazoTenant} : null,
         },
         body: json.encode({
@@ -203,7 +203,7 @@ class WazoAuthGroups extends WazoModule {
 
     final response = await httpClient.get(uri, headers: {
       'Content-Type': 'application/json',
-      'X-API-Token': '$apiToken',
+      'X-Auth-Token': '$apiToken',
     });
 
     switch (response.statusCode) {
@@ -227,7 +227,7 @@ class WazoAuthGroups extends WazoModule {
 
     final response = await httpClient.delete(uri, headers: {
       'Content-Type': 'application/json',
-      'X-API-Token': '$apiToken',
+      'X-Auth-Token': '$apiToken',
     });
 
     switch (response.statusCode) {
@@ -250,7 +250,7 @@ class WazoAuthGroups extends WazoModule {
 
     final response = await httpClient.post(uri, headers: {
       'Content-Type': 'application/json',
-      'X-API-Token': '$apiToken',
+      'X-Auth-Token': '$apiToken',
     });
 
     switch (response.statusCode) {

@@ -1,4 +1,0 @@
-enum WazoSessionType {
-  desktop,
-  mobile,
-}

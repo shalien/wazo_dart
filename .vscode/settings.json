@@ -20,6 +20,8 @@
     },
     "peacock.color": "#2c3fd1",
     "cSpell.words": [
+        "authd",
+        "confd",
         "firstname",
         "lastname",
         "ldaps",

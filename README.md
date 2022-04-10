@@ -1,6 +1,5 @@
 This is a wrapper around the Wazo Community REST API.
 
-
 ## Features
 
 Allow to easily manipulate the Wazo API and to automatize tasks.
@@ -8,7 +7,7 @@ Allow to easily manipulate the Wazo API and to automatize tasks.
 ## Getting started
 
 Add the package in your project :
-```sh
+```
     dart pub add wazo_dart
 ```
 

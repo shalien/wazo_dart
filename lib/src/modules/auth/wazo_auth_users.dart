@@ -1,17 +1,45 @@
 import 'dart:convert';
 
+import 'wazo_auth_groups.dart';
+
 import '../../wazo_exception.dart';
 import '../wazo_module.dart';
-import 'wazo_direction.dart';
-import 'wazo_email_address.dart';
-import 'wazo_user_purpose.dart';
+import '../../wazo_direction.dart';
+import 'users/wazo_user_email_address.dart';
+import 'users/wazo_user_purpose.dart';
+import 'wazo_auth.dart';
 
+/// Represents the `users` endpoint of the `auth` module.
 class WazoAuthUsers extends WazoModule {
   WazoAuthUsers(WazoModule parent) : super.fromParent(parent);
 
+  /// Imported from [WazoAuthAdmin.updateAdminEmailAddress]
+  /// Update all of the users ([userUuid]) email address ([WazoUserEmailAddress]) at the same time.
+  /// If an existing address is missing from the list, it will be removed.
+  /// An empty list will remove all addresses.
+  /// If [addresses] are defined, one and only one address should be [WazoUserEmailAddress.main].
+  /// If the [WazoUserEmailAddress.confirmed] field is set to none or omitted the existing value will be reused if it exists, otherwise the address will not be confirmed.
+  Future<Map<String, dynamic>> updateAdminEmailAddress(
+          String userUuid, List<WazoUserEmailAddress> addresses) async =>
+      (parent as WazoAuth).admin.updateAdminEmailAddress(userUuid, addresses);
+
+  /// Imported from [WazoAuthGroups.dissociateGroupUser]
+  /// Dissociate a user from a group
+  /// [groupUuid] The UUID of the group
+  /// [userUuid] The UUID of the user
+  Future<bool> dissociateGroupUser(String groupUuid, String userUuid) async =>
+      (parent as WazoAuth).groups.dissociateGroupUser(groupUuid, userUuid);
+
+  /// Imported from [WazoAuthGroups.associateGroupUser]
+  /// Associate a user to a group
+  /// [groupUuid] The UUID of the group
+  /// [userUuid] The UUID of the user
+  Future<bool> associateGroupUser(String groupUuid, String userUuid) async =>
+      (parent as WazoAuth).groups.associateGroupUser(groupUuid, userUuid);
+
   /// Retrieve the list of users.
-  /// [order] is the field to order the results by, can be [username], [firstname] or [lastname].
-  /// [direction] is the direction to order the results by, can be [asc] or [desc].
+  /// [order] is the field to order the results by, can be username, firstname or lastname.
+  /// [direction] is the direction to order the results by, can be [WazoDirection] or [WazoDirection.desc].
   /// [recurse] is a boolean to indicate if the results should be recursively retrieved inside subtenants.
   /// [limit] is the maximum number of results to return.
   /// [offset] is the offset to start the results from.
@@ -24,7 +52,7 @@ class WazoAuthUsers extends WazoModule {
       String? search,
       bool recurse = false,
       String? wazoTenant}) async {
-    if (token == null) {
+    if (apiToken == null) {
       throw ArgumentError('No token available');
     }
 
@@ -35,7 +63,7 @@ class WazoAuthUsers extends WazoModule {
     }
 
     if (direction != null) {
-      queryParameters['direction'] = direction.toString().split('.').last;
+      queryParameters['direction'] = direction.toString();
     }
 
     queryParameters['limit'] = limit.toString();
@@ -53,12 +81,10 @@ class WazoAuthUsers extends WazoModule {
     final response = await httpClient.get(
       uri,
       headers: {
-        'X-Auth-Token': '$token',
+        'X-Auth-Token': '$apiToken',
         ...?wazoTenant != null ? {'Wazo-Tenant': wazoTenant} : null,
       },
     );
-
-    print(response.body);
 
     switch (response.statusCode) {
       case 200:
@@ -74,7 +100,6 @@ class WazoAuthUsers extends WazoModule {
   /// [password] is the password of the user.
   /// [firstname] is the firstname of the user.
   /// [lastname] is the lastname of the user.
-  /// [email] is the email of the user.
   /// [wazoTenant] is the tenant of the user.
   /// [uuid] must be a valid format UUID.
   /// [purpose] can either be [WazoUserPurpose.user], [WazoUserPurpose.internal] or [WazoUserPurpose.externalApi].
@@ -88,7 +113,7 @@ class WazoAuthUsers extends WazoModule {
       String uuid,
       {bool enabled = true,
       String? wazoTenant}) async {
-    if (token == null) {
+    if (apiToken == null) {
       throw ArgumentError('No token available');
     }
 
@@ -98,7 +123,7 @@ class WazoAuthUsers extends WazoModule {
       uri,
       headers: {
         'Content-Type': 'application/json',
-        'X-Auth-Token': '$token',
+        'X-Auth-Token': '$apiToken',
         ...?wazoTenant != null ? {'Wazo-Tenant': wazoTenant} : null,
       },
       body: json.encode({
@@ -152,7 +177,7 @@ class WazoAuthUsers extends WazoModule {
 
   /// Set a new [password] for the user after the [userUuid] used the GET on the reset URL
   Future<bool> setUserPassword(String userUuid, String password) async {
-    if (token == null) {
+    if (apiToken == null) {
       throw ArgumentError('No token available');
     }
 
@@ -163,7 +188,7 @@ class WazoAuthUsers extends WazoModule {
       uri,
       headers: {
         'Content-Type': 'application/json',
-        'X-Auth-Token': '$token',
+        'X-Auth-Token': '$apiToken',
       },
       body: json.encode({'password': password}),
     );
@@ -185,7 +210,7 @@ class WazoAuthUsers extends WazoModule {
   Future<Map<String, dynamic>> registerUser(
       String emailAddress, String password, String username,
       {String? firstname, String? lastname}) async {
-    if (token == null) {
+    if (apiToken == null) {
       throw ArgumentError('No token available');
     }
 
@@ -214,7 +239,7 @@ class WazoAuthUsers extends WazoModule {
   }
 
   /// Finds all of a user's refresh token and return the list. Access tokens are not included in the result.
-  /// Doing a query with the [user_uuid] [me] will result in the current user's token being used.
+  /// Doing a query with the [userUuidOrMe] me will result in the current user's token being used.
   Future<Map<String, dynamic>> getUserRefreshTokenList(String userUuidOrMe,
       {String? order,
       WazoDirection? direction,
@@ -222,21 +247,23 @@ class WazoAuthUsers extends WazoModule {
       int? offset = 0,
       String? search,
       String? wazoTenant}) async {
-    if (token == null) {
+    if (apiToken == null) {
       throw ArgumentError('No token available');
     }
 
-    final uri = Uri.parse(
-        formatUrl('/users/$userUuidOrMe/refresh_tokens?${encodeQueryParameters({
-          ...?order != null ? {'order': order} : null,
-          ...?direction != null ? {'direction': direction.toString()} : null,
-          ...?limit != null ? {'limit': limit} : null,
-          ...?offset != null ? {'offset': offset} : null,
-          ...?search != null ? {'search': search} : null,
-        })}'));
+    final queryParameters = {
+      ...?order != null ? {'order': order} : null,
+      ...?direction != null ? {'direction': direction.toString()} : null,
+      ...?limit != null ? {'limit': limit} : null,
+      ...?offset != null ? {'offset': offset} : null,
+      ...?search != null ? {'search': search} : null,
+    };
+
+    final uri = Uri.parse(formatUrl(
+        '/users/$userUuidOrMe/refresh_tokens?${encodeQueryParameters(queryParameters)}'));
 
     final response = await httpClient.get(uri, headers: {
-      'X-Auth-Token': '$token',
+      'X-Auth-Token': '$apiToken',
       ...?wazoTenant != null ? {'Wazo-Tenant': wazoTenant} : null,
     });
 
@@ -253,14 +280,14 @@ class WazoAuthUsers extends WazoModule {
   /// Any tokens that are currently issued are still usable and should be revoked if needed.
   Future<bool> deleteUserRefreshToken(
       String userUuidOrMe, String clientId) async {
-    if (token == null) {
+    if (apiToken == null) {
       throw ArgumentError('No token available');
     }
 
     final uri = Uri.parse(formatUrl('/users/$userUuidOrMe/tokens/$clientId'));
 
     final response = await httpClient.delete(uri, headers: {
-      'X-Auth-Token': '$token',
+      'X-Auth-Token': '$apiToken',
     });
 
     switch (response.statusCode) {
@@ -273,14 +300,14 @@ class WazoAuthUsers extends WazoModule {
 
   /// Delete an user by [userUuid].
   Future<bool> deleteUser(String userUuid) async {
-    if (token == null) {
+    if (apiToken == null) {
       throw ArgumentError('No token available');
     }
 
     final uri = Uri.parse(formatUrl('/users/$userUuid'));
 
     final response = await httpClient.delete(uri, headers: {
-      'X-Auth-Token': '$token',
+      'X-Auth-Token': '$apiToken',
     });
 
     switch (response.statusCode) {
@@ -293,14 +320,14 @@ class WazoAuthUsers extends WazoModule {
 
   /// Retrieves the details of a user by [userUuid].
   Future<Map<String, dynamic>> getUser(String userUuid) async {
-    if (token == null) {
+    if (apiToken == null) {
       throw ArgumentError('No token available');
     }
 
     final uri = Uri.parse(formatUrl('/users/$userUuid'));
 
     final response = await httpClient.get(uri, headers: {
-      'X-Auth-Token': '$token',
+      'X-Auth-Token': '$apiToken',
     });
 
     switch (response.statusCode) {
@@ -324,7 +351,7 @@ class WazoAuthUsers extends WazoModule {
       uri,
       headers: {
         'Content-Type': 'application/json',
-        'X-Auth-Token': '$token',
+        'X-Auth-Token': '$apiToken',
       },
       body: json.encode({
         ...?enabled != null ? {'enabled': enabled} : null,
@@ -345,12 +372,12 @@ class WazoAuthUsers extends WazoModule {
 
   /// Update all of the users email address at the same time.
   /// If an existing address is missing from the list, it will be removed.
-  /// An empty [list] will remove all addresses.
-  /// If addresses are defined, one and only one address should be [main].
+  /// An empty list will remove all addresses.
+  /// If addresses are defined, one and only one address should be main.
   /// All new address are created unconfirmed.
   Future<Map<String, dynamic>> updateUserEmailAddress(
-      String userUuid, List<WazoEmailAddress> emails) async {
-    if (token == null) {
+      String userUuid, List<WazoUserEmailAddress> emails) async {
+    if (apiToken == null) {
       throw ArgumentError('No token available');
     }
 
@@ -360,7 +387,7 @@ class WazoAuthUsers extends WazoModule {
       uri,
       headers: {
         'Content-Type': 'application/json',
-        'X-Auth-Token': '$token',
+        'X-Auth-Token': '$apiToken',
       },
       body: json.encode({
         'emails': emails.map((email) => email.toJson()).toList(),
@@ -378,7 +405,7 @@ class WazoAuthUsers extends WazoModule {
   /// Ask a new confirmation email
   Future<bool> askNewConfirmationEmail(
       String userUuid, String emailUuid) async {
-    if (token == null) {
+    if (apiToken == null) {
       throw ArgumentError('No token available');
     }
 
@@ -386,7 +413,7 @@ class WazoAuthUsers extends WazoModule {
         Uri.parse(formatUrl('/users/$userUuid/emails/$emailUuid/confirm'));
 
     final response = await httpClient.get(uri, headers: {
-      'X-Auth-Token': '$token',
+      'X-Auth-Token': '$apiToken',
     });
 
     switch (response.statusCode) {
@@ -408,7 +435,7 @@ class WazoAuthUsers extends WazoModule {
     int? offset = 0,
     String? search,
   }) async {
-    if (token == null) {
+    if (apiToken == null) {
       throw ArgumentError('No token available');
     }
 
@@ -424,7 +451,7 @@ class WazoAuthUsers extends WazoModule {
         '/users/$userUuid/external?${encodeQueryParameters(queryParameters)}'));
 
     final response = await httpClient.get(uri, headers: {
-      'X-Auth-Token': '$token',
+      'X-Auth-Token': '$apiToken',
     });
 
     switch (response.statusCode) {
@@ -444,7 +471,7 @@ class WazoAuthUsers extends WazoModule {
     int? offset = 0,
     String? search,
   }) async {
-    if (token == null) {
+    if (apiToken == null) {
       throw ArgumentError('No token available');
     }
 
@@ -460,7 +487,7 @@ class WazoAuthUsers extends WazoModule {
         '/users/$userUuid/groups?${encodeQueryParameters(queryParameters)}'));
 
     final response = await httpClient.get(uri, headers: {
-      'X-Auth-Token': '$token',
+      'X-Auth-Token': '$apiToken',
     });
 
     switch (response.statusCode) {
@@ -474,7 +501,7 @@ class WazoAuthUsers extends WazoModule {
   /// Change the user's password
   Future<bool> changeUserPassword(
       String userUuid, String newPassword, String oldPassword) async {
-    if (token == null) {
+    if (apiToken == null) {
       throw ArgumentError('No token available');
     }
 
@@ -484,7 +511,7 @@ class WazoAuthUsers extends WazoModule {
       uri,
       headers: {
         'Content-Type': 'application/json',
-        'X-Auth-Token': '$token',
+        'X-Auth-Token': '$apiToken',
       },
       body: json.encode({
         'new_password': newPassword,
@@ -509,7 +536,7 @@ class WazoAuthUsers extends WazoModule {
     int? offset = 0,
     String? search,
   }) async {
-    if (token == null) {
+    if (apiToken == null) {
       throw ArgumentError('No token available');
     }
 
@@ -525,7 +552,7 @@ class WazoAuthUsers extends WazoModule {
         '/users/$userUuid/policies?${encodeQueryParameters(queryParameters)}'));
 
     final response = await httpClient.get(uri, headers: {
-      'X-Auth-Token': '$token',
+      'X-Auth-Token': '$apiToken',
     });
 
     switch (response.statusCode) {
@@ -537,9 +564,11 @@ class WazoAuthUsers extends WazoModule {
   }
 
   /// Dissociate a policy from a user
+  /// [userUuid] The UUID of the user to dissociate
+  /// [policyUuid] The UUID of the policy to dissociate
   Future<bool> dissociatePolicyFromUser(
       String policyUuid, String userUuid) async {
-    if (token == null) {
+    if (apiToken == null) {
       throw ArgumentError('No token available');
     }
 
@@ -548,7 +577,7 @@ class WazoAuthUsers extends WazoModule {
     final response = await httpClient.delete(
       uri,
       headers: {
-        'X-Auth-Token': '$token',
+        'X-Auth-Token': '$apiToken',
       },
     );
 
@@ -561,8 +590,10 @@ class WazoAuthUsers extends WazoModule {
   }
 
   /// Associate a policy to a user
+  /// [userUuid] The UUID of the user to associate
+  /// [policyUuid] The UUID of the policy to associate
   Future<bool> associatePolicyToUser(String policyUuid, String userUuid) async {
-    if (token == null) {
+    if (apiToken == null) {
       throw ArgumentError('No token available');
     }
 
@@ -571,7 +602,7 @@ class WazoAuthUsers extends WazoModule {
     final response = await httpClient.put(
       uri,
       headers: {
-        'X-Auth-Token': '$token',
+        'X-Auth-Token': '$apiToken',
       },
     );
 
@@ -586,7 +617,7 @@ class WazoAuthUsers extends WazoModule {
   /// Retrieves the list of sessions associated to a user
   Future<Map<String, dynamic>> getUserSessions(String userUuid,
       {int? limit, int? offset = 0, String? wazoTenant}) async {
-    if (token == null) {
+    if (apiToken == null) {
       throw ArgumentError('No token available');
     }
 
@@ -599,7 +630,7 @@ class WazoAuthUsers extends WazoModule {
         '/users/$userUuid/sessions?${encodeQueryParameters(queryParameters)}'));
 
     final response = await httpClient.get(uri, headers: {
-      'X-Auth-Token': '$token',
+      'X-Auth-Token': '$apiToken',
       ...?wazoTenant != null ? {'X-Wazo-Tenant': wazoTenant} : null,
     });
 
@@ -612,8 +643,8 @@ class WazoAuthUsers extends WazoModule {
   }
 
   /// Delete a session
-  Future<bool> deleteSession(String userUuid, String sessionUuid) async {
-    if (token == null) {
+  Future<bool> deleteUserSession(String userUuid, String sessionUuid) async {
+    if (apiToken == null) {
       throw ArgumentError('No token available');
     }
 
@@ -622,7 +653,7 @@ class WazoAuthUsers extends WazoModule {
     final response = await httpClient.delete(
       uri,
       headers: {
-        'X-Auth-Token': '$token',
+        'X-Auth-Token': '$apiToken',
       },
     );
 

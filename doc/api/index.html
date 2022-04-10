@@ -49,7 +49,7 @@
 <p>Allow to easily manipulate the Wazo API and to automatize tasks.</p>
 <h2 id="getting-started">Getting started</h2>
 <p>Add the package in your project :</p>
-<pre class="language-sh"><code class="language-sh">    dart pub add wazo_dart
+<pre class="language-dart"><code>    dart pub add wazo_dart
 </code></pre>
 <h2 id="usage">Usage</h2>
 <p>Usage and example available later</p>
@@ -65,14 +65,16 @@
   <span class="name"><a href="auth/auth-library.html">auth</a></span> 
 
 </dt>
-<dd> 
+<dd>This library is a wrapper around the authd API.
+It's separated in modules, each referencing a specific API Endpoint and its methods (admin, backends, groups, etc...).
+Implemented following the <a href="https://wazo-platform.org/documentation/api/authentication.html">Wazo REST API</a> 
 </dd>
 
           <dt id="wazo_dart">
   <span class="name"><a href="wazo_dart/wazo_dart-library.html">wazo_dart</a></span> 
 
 </dt>
-<dd>Support for doing something awesome. <a href="wazo_dart/wazo_dart-library.html">[...]</a>
+<dd>This is a wrapper around the Wazo Community REST API. <a href="wazo_dart/wazo_dart-library.html">[...]</a>
 </dd>
 
         </dl>

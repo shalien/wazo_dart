@@ -1,7 +1,6 @@
 import 'dart:convert';
 
-import 'package:wazo_dart/src/modules/auth/wazo_direction.dart';
-
+import '../../wazo_direction.dart';
 import '../../wazo_exception.dart';
 import '../wazo_module.dart';
 
@@ -177,7 +176,7 @@ class WazoAuthExternal extends WazoModule {
 
     final response = await httpClient.get(uri, headers: {
       'Content-Type': 'application/json',
-      'X-API-Token': '$apiToken',
+      'X-Auth-Token': '$apiToken',
     });
 
     switch (response.statusCode) {

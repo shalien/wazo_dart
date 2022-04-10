@@ -1,1 +1,0 @@
-enum WazoDirection { asc, desc }
