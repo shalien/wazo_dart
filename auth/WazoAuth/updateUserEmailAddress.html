@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no">
-  <meta name="description" content="API docs for the createToken method from the WazoAuth class, for the Dart programming language.">
-  <title>createToken method - WazoAuth class - auth library - Dart API</title>
+  <meta name="description" content="API docs for the updateUserEmailAddress method from the WazoAuth class, for the Dart programming language.">
+  <title>updateUserEmailAddress method - WazoAuth class - auth library - Dart API</title>
 
 
   
@@ -32,9 +32,9 @@
     <li><a href="../../index.html">wazo_dart</a></li>
     <li><a href="../../auth/auth-library.html">auth</a></li>
     <li><a href="../../auth/WazoAuth-class.html">WazoAuth</a></li>
-    <li class="self-crumb">createToken method</li>
+    <li class="self-crumb">updateUserEmailAddress method</li>
   </ol>
-  <div class="self-name">createToken</div>
+  <div class="self-name">updateUserEmailAddress</div>
   <form class="search navbar-right" role="search">
     <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
   </form>
@@ -45,7 +45,7 @@
 
   <div id="dartdoc-main-content" class="main-content">
       <div>
-<h1><span class="kind-method">createToken</span> method 
+<h1><span class="kind-method">updateUserEmailAddress</span> method 
     <a href="https://dart.dev/null-safety" class="feature feature-null-safety" title="Supports the null safety language feature.">Null safety</a>
 </h1></div>
 
@@ -53,67 +53,50 @@
       
 
 <span class="returntype"><a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/Map-class.html">Map</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>, <span class="type-parameter">dynamic</span>&gt;</span></span>&gt;</span></span>
-<span class="name ">createToken</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="createToken-param-username"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">username</span>, </span></li>
-<li><span class="parameter" id="createToken-param-password"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">password</span>, </span></li>
-<li><span class="parameter" id="createToken-param-accessType">{<span class="type-annotation"><a href="../../auth/WazoAuthAccessType.html">WazoAuthAccessType</a></span> <span class="parameter-name">accessType</span> = <span class="default-value">WazoAuthAccessType.online</span>, </span></li>
-<li><span class="parameter" id="createToken-param-backend"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">backend</span> = <span class="default-value">&#39;wazo_user&#39;</span>, </span></li>
-<li><span class="parameter" id="createToken-param-clientId"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">clientId</span>, </span></li>
-<li><span class="parameter" id="createToken-param-expiration"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> <span class="parameter-name">expiration</span> = <span class="default-value">3600</span>, </span></li>
-<li><span class="parameter" id="createToken-param-refreshToken"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">refreshToken</span>, </span></li>
-<li><span class="parameter" id="createToken-param-tenantId"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">tenantId</span>, </span></li>
-<li><span class="parameter" id="createToken-param-sessionType"><span class="type-annotation">WazoSessionType</span> <span class="parameter-name">sessionType</span> = <span class="default-value">WazoSessionType.desktop</span>}</span></li>
+<span class="name ">updateUserEmailAddress</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="updateUserEmailAddress-param-userUuid"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">userUuid</span>, </span></li>
+<li><span class="parameter" id="updateUserEmailAddress-param-emails"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter">WazoEmailAddress</span>&gt;</span></span> <span class="parameter-name">emails</span></span></li>
 </ol>)
 
       
 
     </section>
     
+<section class="desc markdown">
+  <p>Update all of the users email address at the same time.
+If an existing address is missing from the list, it will be removed.
+An empty <code>list</code> will remove all addresses.
+If addresses are defined, one and only one address should be <code>main</code>.
+All new address are created unconfirmed.</p>
+</section>
 
 
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">Future&lt;Map&lt;String, dynamic&gt;&gt; createToken(String username, String password,
-    {WazoAuthAccessType accessType = WazoAuthAccessType.online,
-    String backend = &#39;wazo_user&#39;,
-    String? clientId,
-    int expiration = 3600,
-    String? refreshToken,
-    String? tenantId,
-    WazoSessionType sessionType = WazoSessionType.desktop}) async {
-  if (accessType == WazoAuthAccessType.offline &amp;&amp; clientId == null) {
-    throw ArgumentError(&#39;clientId is required when accessType is offline&#39;);
+  <pre class="language-dart"><code class="language-dart">Future&lt;Map&lt;String, dynamic&gt;&gt; updateUserEmailAddress(
+    String userUuid, List&lt;WazoEmailAddress&gt; emails) async {
+  if (token == null) {
+    throw ArgumentError(&#39;No token available&#39;);
   }
 
-  final url = Uri.parse(formatUrl(&#39;token&#39;));
+  final uri = Uri.parse(formatUrl(&#39;&#47;users&#47;$userUuid&#47;emails&#39;));
 
-  final body = {
-    &#39;username&#39;: username,
-    &#39;password&#39;: password,
-    &#39;access_type&#39;: accessType.toString().split(&#39;.&#39;).last,
-    &#39;backend&#39;: backend,
-    ...?clientId != null &amp;&amp; accessType == WazoAuthAccessType.offline
-        ? {&#39;client_id&#39;: clientId}
-        : null,
-    &#39;expiration&#39;: expiration,
-    ...?refreshToken != null ? {&#39;refresh_token&#39;: refreshToken} : null,
-    ...?tenantId != null ? {&#39;tenant_id&#39;: tenantId} : null,
-  };
-
-  final response = await httpClient.post(url,
-      headers: {
-        &#39;Content-Type&#39;: &#39;application&#47;json&#39;,
-        &#39;Authorization&#39;: &#39;Basic ${_generateToken(username, password)}&#39;,
-        &#39;Wazo-Session-Type&#39;: sessionType.toString().split(&#39;.&#39;).last,
-      },
-      body: jsonEncode(body));
+  final response = await httpClient.put(
+    uri,
+    headers: {
+      &#39;Content-Type&#39;: &#39;application&#47;json&#39;,
+      &#39;X-Auth-Token&#39;: &#39;$token&#39;,
+    },
+    body: json.encode({
+      &#39;emails&#39;: emails.map((email) =&gt; email.toJson()).toList(),
+    }),
+  );
 
   switch (response.statusCode) {
     case 200:
-      return jsonDecode(response.body);
+      return json.decode(response.body);
     default:
-      print(response.body);
-      throw Exception(&#39;${response.statusCode} ${response.reasonPhrase}&#39;);
+      throw WazoException.fromResponse(response);
   }
 }</code></pre>
 </section>
@@ -132,7 +115,7 @@
   <li><a href="../../index.html">wazo_dart</a></li>
   <li><a href="../../auth/auth-library.html">auth</a></li>
   <li><a href="../../auth/WazoAuth-class.html">WazoAuth</a></li>
-  <li class="self-crumb">createToken method</li>
+  <li class="self-crumb">updateUserEmailAddress method</li>
 </ol>
 
 

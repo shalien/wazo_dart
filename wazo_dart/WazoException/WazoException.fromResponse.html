@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no">
-  <meta name="description" content="API docs for the WazoClient constructor from the Class WazoClient class from the wazo_dart library, for the Dart programming language.">
-  <title>WazoClient constructor - WazoClient class - wazo_dart library - Dart API</title>
+  <meta name="description" content="API docs for the WazoException.fromResponse constructor from the Class WazoException class from the wazo_dart library, for the Dart programming language.">
+  <title>WazoException.fromResponse constructor - WazoException class - wazo_dart library - Dart API</title>
 
 
   
@@ -31,10 +31,10 @@
   <ol class="breadcrumbs gt-separated dark hidden-xs">
     <li><a href="../../index.html">wazo_dart</a></li>
     <li><a href="../../wazo_dart/wazo_dart-library.html">wazo_dart</a></li>
-    <li><a href="../../wazo_dart/WazoClient-class.html">WazoClient</a></li>
-    <li class="self-crumb">WazoClient factory constructor</li>
+    <li><a href="../../wazo_dart/WazoException-class.html">WazoException</a></li>
+    <li class="self-crumb">WazoException.fromResponse factory constructor</li>
   </ol>
-  <div class="self-name">WazoClient</div>
+  <div class="self-name">WazoException.fromResponse</div>
   <form class="search navbar-right" role="search">
     <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
   </form>
@@ -45,12 +45,12 @@
 
   <div id="dartdoc-main-content" class="main-content">
       <div>
-<h1><span class="kind-constructor">WazoClient</span> constructor 
+<h1><span class="kind-constructor">WazoException.fromResponse</span> constructor 
     <a href="https://dart.dev/null-safety" class="feature feature-null-safety" title="Supports the null safety language feature.">Null safety</a>
 </h1></div>
 
     <section class="multi-line-signature">
-      <span class="name ">WazoClient</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="-param-host"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">host</span></span></li>
+      <span class="name ">WazoException.fromResponse</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="fromResponse-param-response"><span class="type-annotation"><a href="https://pub.dev/documentation/http/0.13.4/http/Response-class.html">Response</a></span> <span class="parameter-name">response</span></span></li>
 </ol>)
     </section>
 
@@ -60,7 +60,9 @@
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">factory WazoClient(String host) =&gt; createWazoClient(host);</code></pre>
+  <pre class="language-dart"><code class="language-dart">factory WazoException.fromResponse(http.Response response) {
+  return WazoException._(response.statusCode, json.decode(response.body));
+}</code></pre>
 </section>
 
 
@@ -76,33 +78,31 @@
 <ol class="breadcrumbs gt-separated dark hidden-l" id="sidebar-nav">
   <li><a href="../../index.html">wazo_dart</a></li>
   <li><a href="../../wazo_dart/wazo_dart-library.html">wazo_dart</a></li>
-  <li><a href="../../wazo_dart/WazoClient-class.html">WazoClient</a></li>
-  <li class="self-crumb">WazoClient factory constructor</li>
+  <li><a href="../../wazo_dart/WazoException-class.html">WazoException</a></li>
+  <li class="self-crumb">WazoException.fromResponse factory constructor</li>
 </ol>
 
 
-    <h5>WazoClient class</h5>
+    <h5>WazoException class</h5>
     <ol>
 
-    <li class="section-title"><a href="../../wazo_dart/WazoClient-class.html#constructors">Constructors</a></li>
-    <li><a href="../../wazo_dart/WazoClient/WazoClient.html">WazoClient</a></li>
+    <li class="section-title"><a href="../../wazo_dart/WazoException-class.html#constructors">Constructors</a></li>
+    <li><a href="../../wazo_dart/WazoException/WazoException.fromResponse.html">fromResponse</a></li>
 
 
     <li class="section-title">
-      <a href="../../wazo_dart/WazoClient-class.html#instance-properties">Properties</a>
+      <a href="../../wazo_dart/WazoException-class.html#instance-properties">Properties</a>
     </li>
-    <li><a href="../../wazo_dart/WazoClient/apiToken.html">apiToken</a></li>
-    <li><a href="../../wazo_dart/WazoClient/auth.html">auth</a></li>
-    <li><a href="../../wazo_dart/WazoClient/client.html">client</a></li>
+    <li><a href="../../wazo_dart/WazoException/code.html">code</a></li>
+    <li><a href="../../wazo_dart/WazoException/details.html">details</a></li>
     <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/hashCode.html">hashCode</a></li>
-    <li><a href="../../wazo_dart/WazoClient/host.html">host</a></li>
     <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/runtimeType.html">runtimeType</a></li>
 
-    <li class="section-title inherited"><a href="../../wazo_dart/WazoClient-class.html#instance-methods">Methods</a></li>
+    <li class="section-title inherited"><a href="../../wazo_dart/WazoException-class.html#instance-methods">Methods</a></li>
     <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/noSuchMethod.html">noSuchMethod</a></li>
     <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/toString.html">toString</a></li>
 
-    <li class="section-title inherited"><a href="../../wazo_dart/WazoClient-class.html#operators">Operators</a></li>
+    <li class="section-title inherited"><a href="../../wazo_dart/WazoException-class.html#operators">Operators</a></li>
     <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/operator_equals.html">operator ==</a></li>
 
 

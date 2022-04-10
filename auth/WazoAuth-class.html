@@ -66,18 +66,73 @@
       </dl>
     </section>
 
-    <section class="summary offset-anchor inherited" id="instance-properties">
+    <section class="summary offset-anchor" id="instance-properties">
       <h2>Properties</h2>
 
       <dl class="properties">
-        <dt id="client" class="property inherited">
-  <span class="name"><a href="../auth/WazoAuth/client.html">client</a></span>
-  <span class="signature">&#8594; <a href="../wazo_dart/WazoClient-class.html">WazoClient</a></span> 
+        <dt id="admin" class="property">
+  <span class="name"><a href="../auth/WazoAuth/admin.html">admin</a></span>
+  <span class="signature">&#8594; WazoAuthAdmin</span> 
+
+</dt>
+<dd>
+  Give access to the <code>WazoAuthAdmin</code> methods. 
+  <div class="features">read-only</div>
+
+</dd>
+
+        <dt id="apiToken" class="property inherited">
+  <span class="name"><a href="../auth/WazoAuth/apiToken.html">apiToken</a></span>
+  <span class="signature">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> 
 
 </dt>
 <dd class="inherited">
    
-  <div class="features">final, inherited</div>
+  <div class="features">read-only, inherited</div>
+
+</dd>
+
+        <dt id="backends" class="property">
+  <span class="name"><a href="../auth/WazoAuth/backends.html">backends</a></span>
+  <span class="signature">&#8594; WazoAuthBackends</span> 
+
+</dt>
+<dd>
+  Give access to the <code>WazoAuthBackends</code> methods. 
+  <div class="features">read-only</div>
+
+</dd>
+
+        <dt id="config" class="property">
+  <span class="name"><a href="../auth/WazoAuth/config.html">config</a></span>
+  <span class="signature">&#8594; WazoAuthConfig</span> 
+
+</dt>
+<dd>
+  Give access to the <code>WazoAuthConfig</code> methods. 
+  <div class="features">read-only</div>
+
+</dd>
+
+        <dt id="email" class="property">
+  <span class="name"><a href="../auth/WazoAuth/email.html">email</a></span>
+  <span class="signature">&#8594; WazoAuthEmails</span> 
+
+</dt>
+<dd>
+  Give access to the <code>WazoAuthEmails</code> methods. 
+  <div class="features">read-only</div>
+
+</dd>
+
+        <dt id="external" class="property">
+  <span class="name"><a href="../auth/WazoAuth/external.html">external</a></span>
+  <span class="signature">&#8594; WazoAuthExternal</span> 
+
+</dt>
+<dd>
+  Give access to the <code>WazoAuthExternal</code> methods. 
+  <div class="features">read-only</div>
 
 </dd>
 
@@ -92,9 +147,20 @@
 
 </dd>
 
+        <dt id="host" class="property inherited">
+  <span class="name"><a href="../auth/WazoAuth/host.html">host</a></span>
+  <span class="signature">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> 
+
+</dt>
+<dd class="inherited">
+   
+  <div class="features">read-only, inherited</div>
+
+</dd>
+
         <dt id="httpClient" class="property inherited">
   <span class="name"><a href="../auth/WazoAuth/httpClient.html">httpClient</a></span>
-  <span class="signature">&#8596; <a href="https://pub.dev/documentation/http/0.13.4/http/BaseClient-class.html">BaseClient</a></span> 
+  <span class="signature">&#8596; <a href="https://pub.dev/documentation/http/0.13.4/http/Client-class.html">Client</a></span> 
 
 </dt>
 <dd class="inherited">
@@ -114,6 +180,17 @@
 
 </dd>
 
+        <dt id="parent" class="property inherited">
+  <span class="name"><a href="../auth/WazoAuth/parent.html">parent</a></span>
+  <span class="signature">&#8596; WazoModule</span> 
+
+</dt>
+<dd class="inherited">
+   
+  <div class="features">read / write, inherited</div>
+
+</dd>
+
         <dt id="runtimeType" class="property inherited">
   <span class="name"><a href="https://api.flutter.dev/flutter/dart-core/Object/runtimeType.html">runtimeType</a></span>
   <span class="signature">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/Type-class.html">Type</a></span> 
@@ -122,6 +199,28 @@
 <dd class="inherited">
   A representation of the runtime type of the object. 
   <div class="features">read-only, inherited</div>
+
+</dd>
+
+        <dt id="token" class="property">
+  <span class="name"><a href="../auth/WazoAuth/token.html">token</a></span>
+  <span class="signature">&#8594; WazoAuthToken</span> 
+
+</dt>
+<dd>
+  Give access to the <code>WazoAuthToken</code> methods. 
+  <div class="features">read-only</div>
+
+</dd>
+
+        <dt id="users" class="property">
+  <span class="name"><a href="../auth/WazoAuth/users.html">users</a></span>
+  <span class="signature">&#8594; WazoAuthUsers</span> 
+
+</dt>
+<dd>
+  Give access to the <code>WazoAuthUsers</code> methods. 
+  <div class="features">read-only</div>
 
 </dd>
 
@@ -136,22 +235,33 @@
 
 </dd>
 
+        <dt id="wazoClient" class="property inherited">
+  <span class="name"><a href="../auth/WazoAuth/wazoClient.html">wazoClient</a></span>
+  <span class="signature">&#8594; <a href="../wazo_dart/WazoClient-class.html">WazoClient</a></span> 
+
+</dt>
+<dd class="inherited">
+   
+  <div class="features">final, inherited</div>
+
+</dd>
+
       </dl>
     </section>
 
-    <section class="summary offset-anchor" id="instance-methods">
+    <section class="summary offset-anchor inherited" id="instance-methods">
       <h2>Methods</h2>
       <dl class="callables">
-        <dt id="createToken" class="callable">
-  <span class="name"><a href="../auth/WazoAuth/createToken.html">createToken</a></span><span class="signature">(<wbr><span class="parameter" id="createToken-param-username"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">username</span>, </span><span class="parameter" id="createToken-param-password"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">password</span>, </span><span class="parameter" id="createToken-param-accessType">{<span class="type-annotation"><a href="../auth/WazoAuthAccessType.html">WazoAuthAccessType</a></span> <span class="parameter-name">accessType</span> = <span class="default-value">WazoAuthAccessType.online</span>, </span><span class="parameter" id="createToken-param-backend"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">backend</span> = <span class="default-value">&#39;wazo_user&#39;</span>, </span><span class="parameter" id="createToken-param-clientId"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">clientId</span>, </span><span class="parameter" id="createToken-param-expiration"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> <span class="parameter-name">expiration</span> = <span class="default-value">3600</span>, </span><span class="parameter" id="createToken-param-refreshToken"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">refreshToken</span>, </span><span class="parameter" id="createToken-param-tenantId"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">tenantId</span>}</span>)
-    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/Map-class.html">Map</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>, <span class="type-parameter">dynamic</span>&gt;</span></span>&gt;</span></span>
+        <dt id="encodeQueryParameters" class="callable inherited">
+  <span class="name"><a href="../auth/WazoAuth/encodeQueryParameters.html">encodeQueryParameters</a></span><span class="signature">(<wbr><span class="parameter" id="encodeQueryParameters-param-queryParameters"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Map-class.html">Map</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>, <span class="type-parameter">dynamic</span>&gt;</span></span> <span class="parameter-name">queryParameters</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>
   </span>
   
 
 </dt>
-<dd>
+<dd class="inherited">
    
-  
+  <div class="features">inherited</div>
 
 </dd>
 
@@ -165,19 +275,6 @@
 <dd class="inherited">
    
   <div class="features">inherited</div>
-
-</dd>
-
-        <dt id="isTokenValid" class="callable">
-  <span class="name"><a href="../auth/WazoAuth/isTokenValid.html">isTokenValid</a></span><span class="signature">(<wbr><span class="parameter" id="isTokenValid-param-token"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">token</span>, </span><span class="parameter" id="isTokenValid-param-scope">{<span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">scope</span>, </span><span class="parameter" id="isTokenValid-param-tenantId"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">tenantId</span>}</span>)
-    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/Map-class.html">Map</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>, <span class="type-parameter">dynamic</span>&gt;</span></span>&gt;</span></span>
-  </span>
-  
-
-</dt>
-<dd>
-   
-  
 
 </dd>
 
@@ -273,20 +370,29 @@
     <li><a href="../auth/WazoAuth/WazoAuth.html">WazoAuth</a></li>
 
 
-    <li class="section-title inherited">
+    <li class="section-title">
       <a href="../auth/WazoAuth-class.html#instance-properties">Properties</a>
     </li>
-    <li class="inherited"><a href="../auth/WazoAuth/client.html">client</a></li>
+    <li><a href="../auth/WazoAuth/admin.html">admin</a></li>
+    <li class="inherited"><a href="../auth/WazoAuth/apiToken.html">apiToken</a></li>
+    <li><a href="../auth/WazoAuth/backends.html">backends</a></li>
+    <li><a href="../auth/WazoAuth/config.html">config</a></li>
+    <li><a href="../auth/WazoAuth/email.html">email</a></li>
+    <li><a href="../auth/WazoAuth/external.html">external</a></li>
     <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/hashCode.html">hashCode</a></li>
+    <li class="inherited"><a href="../auth/WazoAuth/host.html">host</a></li>
     <li class="inherited"><a href="../auth/WazoAuth/httpClient.html">httpClient</a></li>
     <li class="inherited"><a href="../auth/WazoAuth/name.html">name</a></li>
+    <li class="inherited"><a href="../auth/WazoAuth/parent.html">parent</a></li>
     <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/runtimeType.html">runtimeType</a></li>
+    <li><a href="../auth/WazoAuth/token.html">token</a></li>
+    <li><a href="../auth/WazoAuth/users.html">users</a></li>
     <li class="inherited"><a href="../auth/WazoAuth/version.html">version</a></li>
+    <li class="inherited"><a href="../auth/WazoAuth/wazoClient.html">wazoClient</a></li>
 
-    <li class="section-title"><a href="../auth/WazoAuth-class.html#instance-methods">Methods</a></li>
-    <li><a href="../auth/WazoAuth/createToken.html">createToken</a></li>
+    <li class="section-title inherited"><a href="../auth/WazoAuth-class.html#instance-methods">Methods</a></li>
+    <li class="inherited"><a href="../auth/WazoAuth/encodeQueryParameters.html">encodeQueryParameters</a></li>
     <li class="inherited"><a href="../auth/WazoAuth/formatUrl.html">formatUrl</a></li>
-    <li><a href="../auth/WazoAuth/isTokenValid.html">isTokenValid</a></li>
     <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/noSuchMethod.html">noSuchMethod</a></li>
     <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/toString.html">toString</a></li>
 
