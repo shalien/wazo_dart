@@ -8,7 +8,7 @@ import 'clients/wazo_client_none.dart'
 abstract class WazoClient {
   late final String host;
   late final Client client;
-  late String? token;
+  late String? apiToken;
 
   WazoAuth get auth;
 

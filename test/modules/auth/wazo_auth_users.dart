@@ -1,8 +1,6 @@
 import 'package:dotenv/dotenv.dart';
 import 'package:test/test.dart';
-import 'package:uuid/uuid.dart';
 import 'package:wazo_dart/src/modules/auth/wazo_direction.dart';
-import 'package:wazo_dart/src/modules/auth/wazo_user_purpose.dart';
 import 'package:wazo_dart/wazo_dart.dart';
 
 void main() {
@@ -20,16 +18,16 @@ void main() {
       username = env['USERNAME'].toString();
       password = env['PASSWORD'].toString();
       client = WazoClient(host);
-      final response = await client.auth.createToken(username, password);
+      final response = await client.auth.token.createToken(username, password);
 
       token = response['data']['token'];
-      client.token = token;
+      client.apiToken = token;
     });
 
     test('Get all users', () async {
       late Map<String, dynamic> response;
       try {
-        response = await client.auth.getUsers(
+        response = await client.auth.users.getUsers(
             order: 'firstname', direction: WazoDirection.asc, recurse: true);
       } on WazoException catch (e) {
         print('${e.code} ${e.details}');
@@ -67,7 +65,8 @@ void main() {
       late bool response;
 
       try {
-        response = await client.auth.resetUserPassword(username: 'oduparc');
+        response =
+            await client.auth.users.resetUserPassword(username: 'oduparc');
       } on WazoException catch (e) {
         print('${e.code} ${e.details}');
       }

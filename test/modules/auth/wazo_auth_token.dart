@@ -20,17 +20,17 @@ void main() {
     });
 
     test('Get token', () async {
-      final response = await client.auth.createToken(username, password);
+      final response = await client.auth.token.createToken(username, password);
 
       token = response['data']['token'];
-      client.token = token;
+      client.apiToken = token;
 
       expect(token, isNotNull);
     });
 
     test('Check is token is valid for auth.users.create', () async {
-      final response =
-          await client.auth.isTokenValid(token, scope: 'auth.users.create');
+      final response = await client.auth.token
+          .isTokenValid(token, scope: 'auth.users.create');
 
       print('$response');
 
@@ -39,7 +39,7 @@ void main() {
 
     test('Check is token is valid for auth.users.read', () async {
       final response =
-          await client.auth.isTokenValid(token, scope: 'auth.users.read');
+          await client.auth.token.isTokenValid(token, scope: 'auth.users.read');
 
       expect(response, isTrue);
     });

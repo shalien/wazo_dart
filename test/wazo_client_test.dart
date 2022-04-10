@@ -24,13 +24,13 @@ void main() {
     });
 
     test('Get Token', () async {
-      final response = await client.auth.createToken(username, password);
+      final response = await client.auth.token.createToken(username, password);
       token = response['data']['token'];
       expect(token, isNotNull);
     });
 
     test('Is Token Valid', () async {
-      final response = await client.auth.isTokenValid(token);
+      final response = await client.auth.token.isTokenValid(token);
 
       print(response);
 

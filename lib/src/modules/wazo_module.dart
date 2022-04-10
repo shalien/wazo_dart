@@ -1,19 +1,24 @@
 import 'package:http/http.dart';
-import 'package:wazo_dart/src/wazo_client.dart';
+import '../wazo_client.dart';
 
 abstract class WazoModule {
   final WazoClient wazoClient;
-  WazoModule? parent;
   final String name;
   final String version;
   late Client httpClient;
+  late WazoModule parent;
 
-  String? get token => wazoClient.token;
+  String? get apiToken => wazoClient.apiToken;
   String get host => wazoClient.host;
 
-  WazoModule(this.wazoClient, this.name, this.version, {this.parent}) {
+  WazoModule(this.wazoClient, this.name, this.version) {
     httpClient = wazoClient.client;
   }
+
+  WazoModule.fromParent(this.parent)
+      : wazoClient = parent.wazoClient,
+        name = parent.name,
+        version = parent.version;
 
   String formatUrl(String path) {
     return '$host/api/$name/$version/$path';
