@@ -50,6 +50,10 @@
 </h1></div>
 
     
+<section class="desc markdown">
+  <p>Represents the auth module of the wazo platform.
+It's separated in modules, each referencing a specific API (admin, backends, groups, etc...).</p>
+</section>
 
 
 
@@ -72,11 +76,11 @@
       <dl class="properties">
         <dt id="admin" class="property">
   <span class="name"><a href="../auth/WazoAuth/admin.html">admin</a></span>
-  <span class="signature">&#8594; WazoAuthAdmin</span> 
+  <span class="signature">&#8594; <a href="../auth/WazoAuthAdmin-class.html">WazoAuthAdmin</a></span> 
 
 </dt>
 <dd>
-  Give access to the <code>WazoAuthAdmin</code> methods. 
+  Give access to the <a href="../auth/WazoAuthAdmin-class.html">WazoAuthAdmin</a> endpoint methods. 
   <div class="features">read-only</div>
 
 </dd>
@@ -87,51 +91,62 @@
 
 </dt>
 <dd class="inherited">
-   
+  Shortcut to get the <a href="../auth/WazoAuth/apiToken.html">apiToken</a> from the <a href="../wazo_dart/WazoClient-class.html">WazoClient</a> 
   <div class="features">read-only, inherited</div>
 
 </dd>
 
         <dt id="backends" class="property">
   <span class="name"><a href="../auth/WazoAuth/backends.html">backends</a></span>
-  <span class="signature">&#8594; WazoAuthBackends</span> 
+  <span class="signature">&#8594; <a href="../auth/WazoAuthBackends-class.html">WazoAuthBackends</a></span> 
 
 </dt>
 <dd>
-  Give access to the <code>WazoAuthBackends</code> methods. 
+  Give access to the <a href="../auth/WazoAuthBackends-class.html">WazoAuthBackends</a> endpoint methods. 
   <div class="features">read-only</div>
 
 </dd>
 
         <dt id="config" class="property">
   <span class="name"><a href="../auth/WazoAuth/config.html">config</a></span>
-  <span class="signature">&#8594; WazoAuthConfig</span> 
+  <span class="signature">&#8594; <a href="../auth/WazoAuthConfig-class.html">WazoAuthConfig</a></span> 
 
 </dt>
 <dd>
-  Give access to the <code>WazoAuthConfig</code> methods. 
+  Give access to the <a href="../auth/WazoAuthConfig-class.html">WazoAuthConfig</a> endpoint methods. 
   <div class="features">read-only</div>
 
 </dd>
 
         <dt id="email" class="property">
   <span class="name"><a href="../auth/WazoAuth/email.html">email</a></span>
-  <span class="signature">&#8594; WazoAuthEmails</span> 
+  <span class="signature">&#8594; <a href="../auth/WazoAuthEmails-class.html">WazoAuthEmails</a></span> 
 
 </dt>
 <dd>
-  Give access to the <code>WazoAuthEmails</code> methods. 
+  Give access to the <a href="../auth/WazoAuthEmails-class.html">WazoAuthEmails</a> endpoint methods. 
   <div class="features">read-only</div>
 
 </dd>
 
         <dt id="external" class="property">
   <span class="name"><a href="../auth/WazoAuth/external.html">external</a></span>
-  <span class="signature">&#8594; WazoAuthExternal</span> 
+  <span class="signature">&#8594; <a href="../auth/WazoAuthExternal-class.html">WazoAuthExternal</a></span> 
 
 </dt>
 <dd>
-  Give access to the <code>WazoAuthExternal</code> methods. 
+  Give access to the <a href="../auth/WazoAuthExternal-class.html">WazoAuthExternal</a> endpoint methods. 
+  <div class="features">read-only</div>
+
+</dd>
+
+        <dt id="groups" class="property">
+  <span class="name"><a href="../auth/WazoAuth/groups.html">groups</a></span>
+  <span class="signature">&#8594; <a href="../auth/WazoAuthGroups-class.html">WazoAuthGroups</a></span> 
+
+</dt>
+<dd>
+  Give access to the <a href="../auth/WazoAuthGroups-class.html">WazoAuthGroups</a> endpoint methods. 
   <div class="features">read-only</div>
 
 </dd>
@@ -153,7 +168,7 @@
 
 </dt>
 <dd class="inherited">
-   
+  Shortcut to get the <a href="../auth/WazoAuth/host.html">host</a> from the <a href="../wazo_dart/WazoClient-class.html">WazoClient</a> 
   <div class="features">read-only, inherited</div>
 
 </dd>
@@ -164,7 +179,7 @@
 
 </dt>
 <dd class="inherited">
-   
+  Get the <a href="https://pub.dev/documentation/http/0.13.4/http/Client-class.html">Client</a> from the <a href="../wazo_dart/WazoClient-class.html">WazoClient</a> 
   <div class="features">read / write, inherited</div>
 
 </dd>
@@ -175,7 +190,7 @@
 
 </dt>
 <dd class="inherited">
-   
+  The <a href="../auth/WazoAuth/name.html">name</a> of the module 
   <div class="features">final, inherited</div>
 
 </dd>
@@ -186,8 +201,19 @@
 
 </dt>
 <dd class="inherited">
-   
+  Used to create the submodules and linked them to the parent module 
   <div class="features">read / write, inherited</div>
+
+</dd>
+
+        <dt id="policies" class="property">
+  <span class="name"><a href="../auth/WazoAuth/policies.html">policies</a></span>
+  <span class="signature">&#8594; <a href="../auth/WazoAuthPolicies-class.html">WazoAuthPolicies</a></span> 
+
+</dt>
+<dd>
+  Give access to the <a href="../auth/WazoAuthPolicies-class.html">WazoAuthPolicies</a> endpoint methods. 
+  <div class="features">read-only</div>
 
 </dd>
 
@@ -202,24 +228,46 @@
 
 </dd>
 
-        <dt id="token" class="property">
-  <span class="name"><a href="../auth/WazoAuth/token.html">token</a></span>
-  <span class="signature">&#8594; WazoAuthToken</span> 
+        <dt id="sessions" class="property">
+  <span class="name"><a href="../auth/WazoAuth/sessions.html">sessions</a></span>
+  <span class="signature">&#8594; <a href="../auth/WazoAuthSessions-class.html">WazoAuthSessions</a></span> 
 
 </dt>
 <dd>
-  Give access to the <code>WazoAuthToken</code> methods. 
+  Give access to the <a href="../auth/WazoAuthSessions-class.html">WazoAuthSessions</a> endpoint methods. 
+  <div class="features">read-only</div>
+
+</dd>
+
+        <dt id="tenants" class="property">
+  <span class="name"><a href="../auth/WazoAuth/tenants.html">tenants</a></span>
+  <span class="signature">&#8594; <a href="../auth/WazoAuthTenants-class.html">WazoAuthTenants</a></span> 
+
+</dt>
+<dd>
+  Give access to the <a href="../auth/WazoAuthTenants-class.html">WazoAuthTenants</a> endpoint methods. 
+  <div class="features">read-only</div>
+
+</dd>
+
+        <dt id="token" class="property">
+  <span class="name"><a href="../auth/WazoAuth/token.html">token</a></span>
+  <span class="signature">&#8594; <a href="../auth/WazoAuthToken-class.html">WazoAuthToken</a></span> 
+
+</dt>
+<dd>
+  Give access to the <a href="../auth/WazoAuthToken-class.html">WazoAuthToken</a> endpoint methods. 
   <div class="features">read-only</div>
 
 </dd>
 
         <dt id="users" class="property">
   <span class="name"><a href="../auth/WazoAuth/users.html">users</a></span>
-  <span class="signature">&#8594; WazoAuthUsers</span> 
+  <span class="signature">&#8594; <a href="../auth/WazoAuthUsers-class.html">WazoAuthUsers</a></span> 
 
 </dt>
 <dd>
-  Give access to the <code>WazoAuthUsers</code> methods. 
+  Give access to the <a href="../auth/WazoAuthUsers-class.html">WazoAuthUsers</a> endpoint methods. 
   <div class="features">read-only</div>
 
 </dd>
@@ -230,7 +278,7 @@
 
 </dt>
 <dd class="inherited">
-   
+  The <a href="../auth/WazoAuth/version.html">version</a> of the module 
   <div class="features">final, inherited</div>
 
 </dd>
@@ -241,7 +289,7 @@
 
 </dt>
 <dd class="inherited">
-   
+  The <a href="../wazo_dart/WazoClient-class.html">WazoClient</a> used to connect to the Wazo API 
   <div class="features">final, inherited</div>
 
 </dd>
@@ -260,7 +308,7 @@
 
 </dt>
 <dd class="inherited">
-   
+  Encode the parameters for usage in the  requests 
   <div class="features">inherited</div>
 
 </dd>
@@ -273,7 +321,7 @@
 
 </dt>
 <dd class="inherited">
-   
+  Format the <a href="https://pub.dev/documentation/path/1.8.1/path/url.html">url</a> with the <a href="../auth/WazoAuth/name.html">name</a> and <a href="../auth/WazoAuth/version.html">version</a> of the module 
   <div class="features">inherited</div>
 
 </dd>
@@ -349,6 +397,19 @@
     <ol>
   <li class="section-title"><a href="../auth/auth-library.html#classes">Classes</a></li>
   <li><a href="../auth/WazoAuth-class.html">WazoAuth</a></li>
+  <li><a href="../auth/WazoAuthAdmin-class.html">WazoAuthAdmin</a></li>
+  <li><a href="../auth/WazoAuthBackends-class.html">WazoAuthBackends</a></li>
+  <li><a href="../auth/WazoAuthConfig-class.html">WazoAuthConfig</a></li>
+  <li><a href="../auth/WazoAuthEmails-class.html">WazoAuthEmails</a></li>
+  <li><a href="../auth/WazoAuthExternal-class.html">WazoAuthExternal</a></li>
+  <li><a href="../auth/WazoAuthGroups-class.html">WazoAuthGroups</a></li>
+  <li><a href="../auth/WazoAuthPolicies-class.html">WazoAuthPolicies</a></li>
+  <li><a href="../auth/WazoAuthSessions-class.html">WazoAuthSessions</a></li>
+  <li><a href="../auth/WazoAuthTenants-class.html">WazoAuthTenants</a></li>
+  <li><a href="../auth/WazoAuthToken-class.html">WazoAuthToken</a></li>
+  <li><a href="../auth/WazoAuthUsers-class.html">WazoAuthUsers</a></li>
+  <li><a href="../auth/WazoConfigPatch-class.html">WazoConfigPatch</a></li>
+  <li><a href="../auth/WazoTenantAddress-class.html">WazoTenantAddress</a></li>
 
 
 
@@ -356,7 +417,11 @@
 
 
   <li class="section-title"><a href="../auth/auth-library.html#enums">Enums</a></li>
-  <li><a href="../auth/WazoAuthAccessType.html">WazoAuthAccessType</a></li>
+  <li><a href="../auth/WazoBackendLdapProtocolSecurity.html">WazoBackendLdapProtocolSecurity</a></li>
+  <li><a href="../auth/WazoBackendLdapSearchFilters.html">WazoBackendLdapSearchFilters</a></li>
+  <li><a href="../auth/WazoBackendLdapVersion.html">WazoBackendLdapVersion</a></li>
+  <li><a href="../auth/WazoTokenAccessType.html">WazoTokenAccessType</a></li>
+  <li><a href="../auth/WazoTokenSessionType.html">WazoTokenSessionType</a></li>
 
 
 </ol>
@@ -379,12 +444,16 @@
     <li><a href="../auth/WazoAuth/config.html">config</a></li>
     <li><a href="../auth/WazoAuth/email.html">email</a></li>
     <li><a href="../auth/WazoAuth/external.html">external</a></li>
+    <li><a href="../auth/WazoAuth/groups.html">groups</a></li>
     <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/hashCode.html">hashCode</a></li>
     <li class="inherited"><a href="../auth/WazoAuth/host.html">host</a></li>
     <li class="inherited"><a href="../auth/WazoAuth/httpClient.html">httpClient</a></li>
     <li class="inherited"><a href="../auth/WazoAuth/name.html">name</a></li>
     <li class="inherited"><a href="../auth/WazoAuth/parent.html">parent</a></li>
+    <li><a href="../auth/WazoAuth/policies.html">policies</a></li>
     <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/runtimeType.html">runtimeType</a></li>
+    <li><a href="../auth/WazoAuth/sessions.html">sessions</a></li>
+    <li><a href="../auth/WazoAuth/tenants.html">tenants</a></li>
     <li><a href="../auth/WazoAuth/token.html">token</a></li>
     <li><a href="../auth/WazoAuth/users.html">users</a></li>
     <li class="inherited"><a href="../auth/WazoAuth/version.html">version</a></li>
