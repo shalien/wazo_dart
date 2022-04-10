@@ -47,7 +47,7 @@ class WazoAuthUsers extends WazoModule {
   Future<Map<String, dynamic>> getUsers(
       {String? order,
       WazoDirection? direction,
-      int limit = 0,
+      int? limit,
       int offset = 0,
       String? search,
       bool recurse = false,
@@ -56,24 +56,14 @@ class WazoAuthUsers extends WazoModule {
       throw ArgumentError('No token available');
     }
 
-    final queryParameters = <String, String>{};
-
-    if (order != null) {
-      queryParameters['order'] = order;
-    }
-
-    if (direction != null) {
-      queryParameters['direction'] = direction.toString();
-    }
-
-    queryParameters['limit'] = limit.toString();
-    queryParameters['offset'] = offset.toString();
-
-    if (search != null) {
-      queryParameters['search'] = search;
-    }
-
-    queryParameters['recurse'] = recurse.toString();
+    final queryParameters = <String, dynamic>{
+      ...?order != null ? {'order': order} : null,
+      'limit': limit,
+      ...?direction != null ? {'direction': direction.toString()} : null,
+      ...?search != null ? {'search': search} : null,
+      'recurse': recurse,
+      'offset': offset,
+    };
 
     final uri = Uri.parse(
         formatUrl('/users?${encodeQueryParameters(queryParameters)}'));

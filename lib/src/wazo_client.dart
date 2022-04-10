@@ -5,6 +5,7 @@ import 'modules/auth/wazo_auth.dart';
 import 'clients/wazo_client_none.dart'
     if (dart.library.io) 'clients/wazo_client_io.dart'
     if (dart.library.html) 'clients/wazo_client_html.dart';
+import 'modules/calld/wazo_calld.dart';
 
 /// Represent a client to connect and interact with the Wazo API
 abstract class WazoClient {
@@ -17,8 +18,11 @@ abstract class WazoClient {
   /// The [apiToken] used to authenticate to the Wazo API
   late String? apiToken;
 
-  /// Give access to the [WazoAuth] (authd) related methods
+  /// Give access to the [WazoAuth] (auth) related methods
   WazoAuth get auth;
+
+  /// Give access to the [WazoCalld] (calld) related methods
+  WazoCalld get calld;
 
   /// Create a new [WazoClient] from a [host]
   /// Depending on the platform will create a client using [IOClient] or [BrowserClient]

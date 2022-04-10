@@ -41,6 +41,7 @@ class WazoAuthTenants extends WazoModule {
       uri,
       headers: {
         'Content-Type': 'application/json',
+        'X-Auth-Token': '$apiToken',
         ...?wazoTenant != null ? {'X-Wazo-Tenant': wazoTenant} : null,
       },
     );

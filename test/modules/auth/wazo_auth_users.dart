@@ -1,6 +1,6 @@
 import 'package:dotenv/dotenv.dart';
 import 'package:test/test.dart';
-import 'package:wazo_dart/src/modules/auth/wazo_direction.dart';
+import 'package:wazo_dart/src/wazo_direction.dart';
 import 'package:wazo_dart/wazo_dart.dart';
 
 void main() {

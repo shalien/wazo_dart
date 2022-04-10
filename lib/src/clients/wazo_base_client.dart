@@ -2,6 +2,7 @@ import 'package:http/http.dart';
 
 import '../../wazo_dart.dart';
 import '../modules/auth/wazo_auth.dart';
+import '../modules/calld/wazo_calld.dart';
 
 /// Base implementation of [WazoClient]
 abstract class WazoBaseClient implements WazoClient {
@@ -23,9 +24,13 @@ abstract class WazoBaseClient implements WazoClient {
   @override
   String? apiToken;
 
-  /// Give access to the [WazoAuth] authd module methods and endpoints
+  /// Give access to the [WazoAuth] auth module methods and endpoints
   @override
   WazoAuth get auth => WazoAuth(this);
+
+  /// Give access to the [WazoCalld] calld module methods and endpoints
+  @override
+  WazoCalld get calld => WazoCalld(this);
 
   /// Create a new [WazoClient] from a [host] and [client]
   WazoBaseClient(this._host, this._client);
