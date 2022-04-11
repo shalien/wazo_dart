@@ -21,8 +21,10 @@
     "peacock.color": "#2c3fd1",
     "cSpell.words": [
         "authd",
+        "autoanswer",
         "Calld",
         "confd",
+        "exten",
         "firstname",
         "lastname",
         "ldaps",
