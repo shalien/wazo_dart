@@ -58,7 +58,7 @@ class WazoAuthUsers extends WazoModule {
 
     final queryParameters = <String, dynamic>{
       ...?order != null ? {'order': order} : null,
-      'limit': limit,
+      ...?limit != null ? {'limit': limit} : null,
       ...?direction != null ? {'direction': direction.toString()} : null,
       ...?search != null ? {'search': search} : null,
       'recurse': recurse,
