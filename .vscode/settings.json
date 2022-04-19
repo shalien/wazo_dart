@@ -28,6 +28,9 @@
         "firstname",
         "lastname",
         "ldaps",
+        "SCCP",
+        "unhold",
+        "unmute",
         "Wazo"
     ]
 }
